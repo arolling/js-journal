@@ -12,9 +12,16 @@ $(document).ready(function(){
     journal.addEntry(entry);
     $('#entries').empty();
     journal.entries.forEach(function(entry) {
-      $('#entries').prepend("<h3>" + entry.title + "</h3><p>" + entry.body + "</p><hr />");
+      $('#entries').prepend("<h5 class='small details'>Details: <span class='hideme'>Word Count:" + entry.wordCount() + "</span><br><span class='hideme'>" + entry.date + "</span></h5><hr />");
+      $('#entries').prepend("<h3>" + entry.title + "</h3><h4>" + entry.body + "</h4>");
     });
     $('#entryTitle').val('');
     $('#entryText').val('');
+
+    $('h5.details').click(function(event) {
+      $(event.target).children().toggle();
+    });
   });
+
+
 });
